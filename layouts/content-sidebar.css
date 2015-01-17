@@ -4,9 +4,17 @@ Layout: Content-Sidebar
 */
 
 
-.site-main {
-	background: #b2b2b2;
+.site-content {
+    padding-bottom: 4em;
+    background: #b2b2b2 url(../images/pattern.svg) repeat;
 }
+.single .site-content,
+.page .site-content { 
+    background: #fff; 
+    background: hsl(0, 0%, 100%);
+}
+
+
 .site-content .widget-area {
 	 width: 380px;
     float: right;
@@ -20,18 +28,42 @@ Layout: Content-Sidebar
 }
 
 .entry-header,
-.entry-content,
-.entry-meta,
+.entry-content, 
 .entry-footer,
 .tag-links,
 .post-navigation,
 .comments-area,
-.paging-navigation {
+.paging-navigation,
+.page-header {
     position: relative;
     max-width: 780px;
     max-width: 78rem;
     padding: 0 4rem;
     margin: 0 auto;
+}
+
+.index-box {
+    max-width: 780px;
+    max-width: 78rem;
+    padding: 1em 0 2em;
+    margin: 0 auto 2em;
+    background: #fff;
+    background: hsl(0, 0%, 100%);
+}
+
+.index-box blockquote.alignleft,
+.index-box blockquote.alignright {
+    background: #fff;
+    background: hsl(0, 0%, 100%);
+    border: none;
+}
+
+@media screen and (min-width: 1820px) {
+    .index-box blockquote.alignright { padding-right: 2em; }
+}
+
+@media screen and (min-width: 1320px) {
+    .index-box blockquote.alignleft { padding-left: 2em; }
 }
 
 @media screen and (min-width: 1160px){
@@ -43,13 +75,14 @@ Layout: Content-Sidebar
 		}
 		
 		.entry-header,
-		.entry-content,
-		.entry-meta,
+		.entry-content, 
 		.entry-footer,
 		.tag-links,
 		.post-navigation,
 		.comments-area,
-		.paging-navigation { 
+		.paging-navigation,
+		.index-box,
+		.page-header{ 
 			margin-right: 0;
 		}
 }
@@ -62,3 +95,12 @@ Layout: Content-Sidebar
 			margin:1em auto 0;
 		}
 }
+
+.page-header,
+.paging-navigation {
+    padding-top: 1em;
+    padding-bottom: 1em;
+    margin-bottom: 2em;
+    list-style-type: none;
+    background: #fff;
+} 

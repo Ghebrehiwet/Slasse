@@ -21,6 +21,12 @@ if ( ! function_exists( 'slasse_setup' ) ) :
  * as indicating support for post thumbnails.
  */
 function slasse_setup() {
+	
+	
+	// This theme styles the visual editor to resemble the theme style.
+	$font_url = 'http://fonts.googleapis.com/css?family=Lato:300,400,400italic,700,900,900italic|PT+Serif:400,700,400italic,700italic';
+	add_editor_style( array( 'inc/editor-style.css', str_replace( ',', '%2C', $font_url ) ) );
+
 
 	/*
 	 * Make theme available for translation.
@@ -47,6 +53,8 @@ function slasse_setup() {
 	 * @link http://codex.wordpress.org/Function_Reference/add_theme_support#Post_Thumbnails
 	 */
 	add_theme_support( 'post-thumbnails' );
+	add_image_size('large-thumb', 1060, 650, true);
+	add_image_size('index-thumb', 780, 250, true);
 
 	// This theme uses wp_nav_menu() in one location.
 	register_nav_menus( array(
@@ -114,11 +122,16 @@ add_action( 'widgets_init', 'slasse_widgets_init' );
 function slasse_scripts() {
 	wp_enqueue_style( 'slasse-style', get_stylesheet_uri() );
 	
-	wp_enqueue_style ('slasse-content-sidebar', get_template_directory_uri() . '/layouts/content-sidebar.css');
+	if (is_page_template('page-templates/page-nosidebar.php')) {
+		wp_enqueue_style( 'slasse-layout-style' , get_template_directory_uri() . '/layouts/no-sidebar.css');
+	} else {
+		wp_enqueue_style( 'slasse-layout-style' , get_template_directory_uri() . '/layouts/content-sidebar.css');
+	}
 	
 	wp_enqueue_style ('slasse-google-fonts', 'http://fonts.googleapis.com/css?family=Lato:100,400,900,400italic,900italic|PT+Serif:400,700,400italic,700italic');
 	
-	wp_enqueue_style ('slasse-fontawesome', 'http//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css');
+	
+	wp_enqueue_style('slasse_fontawesome', 'http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css');
 
 	wp_enqueue_script( 'slasse-superfish', get_template_directory_uri() . '/js/superfish.min.js', array('jquery'), '20150104', true );
 	
